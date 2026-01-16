@@ -79,5 +79,6 @@
 
 	<modules>
 		<module>kafka-producer-wikimedia</module>
+		<module>kafka-consumer-database</module>
 	</modules>
 </project>
