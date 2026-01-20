@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class WikimediaChangesProducer {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(WikimediaChangesProducer.class);
 	
+	@Value("${wikimedia.stream.url}")
+	private String url;
+	
 	private KafkaTemplate<String, String> kafkaTemplate;
 	
 	public WikimediaChangesProducer(KafkaTemplate<String, String> kafkaTemplate) {
@@ -31,7 +35,6 @@ public class WikimediaChangesProducer {
 		
 		// to read real time streaming data from wikimedia using event source
 		EventHandler eventHandler = new WikimediaChangesHandler(kafkaTemplate, topic);
-		String url="https://stream.wikimedia.org/v2/stream/recentchange";
 		
 		OkHttpClient client = new OkHttpClient.Builder()
 			.addInterceptor(chain -> {
