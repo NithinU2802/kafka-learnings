@@ -39,3 +39,8 @@ Synchronous VS Asynchronous
 Tight Coupling VS Loose Coupling
 One-to-one VS One-to-many
 Slower at scale VS Very fast & Scalable
+
+# KRaft
+- It is the build in system.
+- To help manage its own metadata also cluster coordination internally.
+- It is simpler and easier way to operate things itself.
