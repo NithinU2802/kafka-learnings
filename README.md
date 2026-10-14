@@ -44,3 +44,18 @@ Slower at scale VS Very fast & Scalable
 - It is the build in system.
 - To help manage its own metadata also cluster coordination internally.
 - It is simpler and easier way to operate things itself.
+
+# Bootstrap Servers
+It provides the initial hosts which act as the starting point for a kafka
+client to discover the full set of alive servers in the cluster.
+
+# Producer produce
+This is used to produce a topic in kafka and store the events created by the
+service. Incase if the topic is not available it will create the load as well.
+
+# Producer Flush
+It is used to append the value as a batch instead of loading one by one to the
+kafka. Eg: to collect 10 and load as batch to the kafka accordingly. Also incase if the application crashes then it will load the
+items before exiting the program.
+
+
