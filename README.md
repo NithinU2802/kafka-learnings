@@ -58,4 +58,25 @@ It is used to append the value as a batch instead of loading one by one to the
 kafka. Eg: to collect 10 and load as batch to the kafka accordingly. Also incase if the application crashes then it will load the
 items before exiting the program.
 
+# Kafka CLI (docker)
+
+```bash
+docker exec -it kafka kafka-topics --list --bootstrap-server localhost:9092
+```
+
+```bash
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --describe --topic orders
+```
+
+```bash
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --help
+```
+
+```bash
+docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --help
+```
+
+```bash
+docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic orders --from-beginning
+```
 
