@@ -39,3 +39,66 @@ Synchronous VS Asynchronous
 Tight Coupling VS Loose Coupling
 One-to-one VS One-to-many
 Slower at scale VS Very fast & Scalable
+
+# KRaft
+- It is the build in system.
+- To help manage its own metadata also cluster coordination internally.
+- It is simpler and easier way to operate things itself.
+
+# Bootstrap Servers
+It provides the initial hosts which act as the starting point for a kafka
+client to discover the full set of alive servers in the cluster.
+
+# Producer produce
+This is used to produce a topic in kafka and store the events created by the
+service. Incase if the topic is not available it will create the load as well.
+
+# Producer Flush
+It is used to append the value as a batch instead of loading one by one to the
+kafka. Eg: to collect 10 and load as batch to the kafka accordingly. Also incase if the application crashes then it will load the
+items before exiting the program.
+
+# Kafka CLI (docker)
+
+```bash
+docker exec -it kafka kafka-topics --list --bootstrap-server localhost:9092
+```
+
+```bash
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --describe --topic orders
+```
+
+```bash
+docker exec -it kafka kafka-topics --bootstrap-server localhost:9092 --help
+```
+
+```bash
+docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --help
+```
+
+```bash
+docker exec -it kafka kafka-console-consumer --bootstrap-server localhost:9092 --topic orders --from-beginning
+```
+
+# Consumer Group Id
+It is a unique string that identifies the consumer group which the consumer belongs to.
+
+# Auto offset reset
+It determines where a consumer starts reading messages when no valid offset exists. Below are different options:
+1. Earliest - automatically reset the offset to the earliest offset.
+2. Latest - automatically reset the offset to the latest offset.
+3. by_duration:<duration> - automatically reset the offset to a configured <duration> from the current timestamp.
+4. none: throw exception to the consumer if no previous offset is found for the consumer's group/
+
+# Kafka Poll
+It is designed so that consumers can ask or pull the brokder if there are new messages instead of kafka pushing the messages to them on its own.
+
+This polling let the consumers as same consumer subscribe to multiple topics. Which can control how many times they read those events and messages from different topics.
+
+Note: It helps in Load balancing, pausing, catching up, simple, reliable, scalable, controllable.
+
+# Kafks Subscribe
+To registers interest in one or more topics and puts the consumer into a consumer group.
+
+# Close Method
+It is crucial for properly releasing resource associate with a consumer instance. Which ensures that network connections and file handles are closed, offsets are committed and the consumer's partition assignments are revoked.
